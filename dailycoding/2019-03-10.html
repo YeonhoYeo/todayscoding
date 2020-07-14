@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>2019-03-10</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <pre>
+안녕하세요, 매일프로그래밍 이번주 문제입니다.
+
+피보나치 배열은 0과 1로 시작하며, 다음 피보나치 수는 바로 앞의 두 피보나치 수의 합이 된다. 정수 N이 주어지면, N보다 작은 모든 짝수 피보나치 수의 합을 구하여라.
+
+Fibonacci sequence starts with 0 and 1 where each fibonacci number is a sum of two previous fibonacci numbers. Given an integer N, find the sum of all even fibonacci numbers.
+
+
+예제)
+
+Input: N = 12
+
+Output: 10 // 0, 1, 2, 3, 5, 8 중 짝수인 2 + 8 = 10.
+
+https://mailprogramming.com/solution/2?email=yoyonho@naver.com&token=13ee7835a3ece48ae4bd688aab16ca7e67d33b5d415b459107c35db82c90ecdf
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+    </pre>
+
+    <script type="text/javascript">
+      const valN = 2;
+      
+      function fibonacciEvenSum (p2) {
+        var evenSum = 0;
+        getFibonacci(p2);
+        for (var i = 0; i < p2; i += 1) {
+          
+        }
+        return evenSum;
+      }
+
+      function getFibonacci(p1){
+        if(p1 == 0 || p1 == 1){
+          return p1;
+        }
+        return getFibonacci(p1-1) + getFibonacci(p1-2);
+      }
+
+      document.write(valN+' : ' +getFibonacci(valN) + ' <br/>');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>2019-03-08</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <pre>
+안녕하세요, 매일프로그래밍 이번주 문제입니다.
+정수 배열(int array)가 주어지면 가장 큰 이어지는 원소들의 합을 구하시오. 단, 시간복잡도는 O(n).
+Given an integer array, find the largest consecutive sum of elements.
+
+예제}
+Input: [-1, 3, -1, 5]
+Output: 7 // 3 + (-1) + 5
+
+Input: [-5, -3, -1]
+Output: -1 // -1
+
+Input: [2, 4, -2, -3, 8]
+Output: 9 // 2 + 4 + (-2) + (-3) + 8
+
+** 감사합니다, 이런 문제를 매주 받고 싶으시면 유료 플랜을 구매해주세요 **
+
+** https://mailprogramming.com/subscribe **
+
+https://mailprogramming.com/solution/1?email=yoyonho@naver.com&token=bcd4e50f45d4be755d31a0201a2094564e738f4de94dba779a26ad5b7345fc21
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+    </pre>
+
+    <script type="text/javascript">
+      const inputVal1 = [-1, 3, -1, 5];
+      const inputVal2 = [-5, -3, -1];
+      const inputVal3 = [2, 4, -2, -3, 8];
+      
+      function calMaxVal(inputVal) {
+        let currentSum = inputVal[0];
+        let maxSum = inputVal[0];
+        for (var i = 1; i < inputVal.length; i += 1) {
+          document.write(i + ', inputVal[i] '+ inputVal[i] +' currentSum : ' + currentSum + ' maxSum : ' + maxSum + ' <br/>');
+
+          currentSum = Math.max(currentSum + inputVal[i], inputVal[i]);
+          maxSum = Math.max(currentSum, maxSum);
+
+          document.write(i + ', inputVal[i] '+ inputVal[i] +' currentSum : ' + currentSum + ' maxSum : ' + maxSum + ' <br/>');
+          document.write('-----<br/>');
+        }
+        return maxSum;
+      }
+      document.write(calMaxVal(inputVal1));
+    </script>
+  </body>
+</html>
