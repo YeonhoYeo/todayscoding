@@ -28,25 +28,63 @@ https://mailprogramming.com/solution/2?email=yoyonho@naver.com&token=13ee7835a3e
     </pre>
 
     <script type="text/javascript">
-      const valN = 2;
-      
-      function fibonacciEvenSum (p2) {
-        var evenSum = 0;
-        getFibonacci(p2);
-        for (var i = 0; i < p2; i += 1) {
-          
+      const valN = 12;
+
+      let fiboEvenSum = 0;
+
+      function fibonacciEvenSum1 (p1) {
+        var piboVal = 0;
+        var i = 0;
+        while ( true ) {
+          piboVal = getFibonacci(i);
+          if(p1<piboVal){
+            document.write(fiboEvenSum);
+            document.write('<br/>');
+            break;
+          }
+          if(piboVal% 2 === 0){
+            fiboEvenSum += piboVal;
+          }
+          document.write( i + ' : ' + piboVal + ' <br/>');
+          i += 1;
         }
-        return evenSum;
       }
 
+      // recursion
       function getFibonacci(p1){
-        if(p1 == 0 || p1 == 1){
+        if(p1 === 0 || p1 === 1){
           return p1;
         }
-        return getFibonacci(p1-1) + getFibonacci(p1-2);
+        return getFibonacci( p1 - 1 ) + getFibonacci( p1 - 2 );
       }
 
-      document.write(valN+' : ' +getFibonacci(valN) + ' <br/>');
+      fibonacciEvenSum1(valN);
+
+      let fiboNum1 = 0;
+      let fiboNum2 = 1;
+      let fiboNum3 = 1;
+      let sumval = 0;
+
+      function fibonacciEvenSum2(p1) {
+
+        while ( true ) {
+          fiboNum3 = fiboNum1 + fiboNum2;
+          if ( p1 < fiboNum3 ){
+            break;
+          }
+          if ( fiboNum3 % 2 === 0 ) {
+            document.write( fiboNum3 + ' <br/>');
+            sumval += fiboNum3;
+          }
+          fiboNum1 = fiboNum2;
+          fiboNum2 = fiboNum3;
+        }
+        document.write( sumval + ' <br/>');
+      }
+
+      fibonacciEvenSum2(valN);
+
+      
     </script>
   </body>
 </html>
