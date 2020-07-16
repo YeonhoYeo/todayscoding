@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>2019-03-18</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <pre>
+
+안녕하세요, 매일프로그래밍 이번주 문제입니다.
+
+정수 n이 주어지면, n개의 여는 괄호 "("와 n개의 닫는 괄호 ")"로 만들 수 있는 괄호 조합을 모두 구하시오. (시간 복잡도 제한 없습니다)
+
+Given an integer N, find the number of possible balanced parentheses with N opening and closing brackets.
+
+
+예제)
+
+Input: 1
+Output: ["()"]
+
+Input: 2
+Output: ["(())", "()()"]
+
+Input: 3
+Output: ["((()))", "(()())", "()(())", "(())()", "()()()"]
+
+--------------------------------------------------------------------------------------------------------------------------------------
+    </pre>
+
+    <script type="text/javascript">
+      const valN = 3;
+      var tryCnt = 0;
+      function parenTheses(p1){
+        let rtnVal = new Set();
+       
+        recurse(rtnVal, '', 0, 0, p1);
+        
+        console.log(rtnVal);
+        return rtnVal;
+      }
+
+      function recurse(rtnVal, strCur, openCnt, closeCnt, p1) {
+        // 정수 n개 * 2 이면 괄호문자 개수와 같음.
+        if (strCur.length == p1 * 2) {
+          rtnVal.add(strCur);
+          return;
+        }
+        
+        if ( openCnt < p1 ) {
+          recurse(rtnVal, strCur + '(', openCnt + 1, closeCnt, p1)
+        }
+
+        if ( closeCnt < openCnt ) {
+          recurse(rtnVal, strCur + ')', openCnt, closeCnt + 1, p1)
+        }
+        
+      }
+
+      parenTheses(valN).forEach(function printSet(val){
+        document.write(val+"<br/>");
+      });
+    </script>
+  </body>
+</html>
