@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>2019-03-19</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <pre>
+
+      안녕하세요, 매일프로그래밍 이번주 문제입니다.
+ 
+      정수(int)가 주어지면, 팰린드롬(palindrome)인지 알아내시오. 팰린드롬이란, 앞에서부터 읽으나 뒤에서부터 읽으나 같은 단어를 말합니다. 단, 정수를 문자열로 바꾸면 안됩니다.
+      
+      Given an integer, check if it is a palindrome.
+      
+      
+      예제)
+      
+      Input: 12345
+      
+      Output: False
+      
+      
+      Input: -101
+      
+      Output: False
+      
+      
+      Input: 11111
+      
+      Output: True
+      
+      
+      Input: 12421
+      
+      Output: True
+
+--------------------------------------------------------------------------------------------------------------------------------------
+    </pre>
+
+    <script type="text/javascript">
+      const var1 = 12345;
+      const var2 = -101;
+      const var3 = 11111;
+      const var4 = 12421;
+      const var5 = 998899;
+
+      function palindrome(p1){
+
+        if ( p1 < 0 || (p1 % 10 == 0 && p1 != 0 )) {
+          return false;
+        }
+
+        let revertHalf = 0;
+
+        while ( p1 > revertHalf ) {
+          revertHalf = revertHalf * 10 + ( p1 % 10 );
+          p1 = Math.floor( p1 / 10 );
+        }
+
+        return p1 == revertHalf || p1 == Math.floor( revertHalf / 10 )
+      }
+      
+      function palindrome2(p1){
+
+        let rtnVal = true;
+        let tempVal = p1;
+        let reverseVal = 0;
+
+        if ( tempVal > 0 ) {
+          while ( tempVal > 0 ){
+            reverseVal = ( reverseVal * 10 ) + ( tempVal % 10 ); 
+            tempVal = Math.floor( tempVal / 10 );
+          }
+          if( p1 == reverseVal ){
+            rtnVal = true;
+          } else {
+            rtnVal = false;
+          }
+        } else {
+          rtnVal = false;
+        }
+        return rtnVal;
+      }
+
+      document.write(palindrome(var1)+'<br>');
+      document.write(palindrome(var2)+'<br>');
+      document.write(palindrome(var3)+'<br>');
+      document.write(palindrome(var4)+'<br>');
+      document.write(palindrome(var5)+'<br>');
+    </script>
+  </body>
+</html>
