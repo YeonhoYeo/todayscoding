@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>2019-03-25</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <pre>
+
+      안녕하세요, 매일프로그래밍 이번주 문제입니다.
+ 
+      정수 배열과 타겟 숫자가 주어지면, 합이 타겟값이 되는 두 원소의 인덱스를 찾으시오.
+      
+      단, 시간복잡도 O(n) 여야 합니다.
+      
+      
+      
+      Given an array of integers and a target integer, find two indexes of the array element that sums to the target number.
+      
+      
+      
+      예제)
+      
+      Input: [2, 5, 6, 1, 10], 타겟 8
+      
+      Output: [0, 2] // 배열[0] + 배열[2] = 8
+
+--------------------------------------------------------------------------------------------------------------------------------------
+    </pre>
+
+    <script type="text/javascript">
+
+      const arrInput = [2, 5, 6, 1, 10];
+      const targetInput = 8;
+
+      function findSumIndex(inputArr, targertNum) {
+        let arrOutput = [];
+
+        for ( let i = 0; i < inputArr.length; i += 1 ){
+          if( inputArr[i] > targertNum ) {
+            break;
+          }
+          let rtnIdx = inputArr.indexOf(targertNum - inputArr[i]);
+          if( rtnIdx > 0 ){
+            arrOutput.push(i);
+            arrOutput.push(rtnIdx);
+            break;
+          }
+        }
+        return arrOutput;
+      }
+      
+      console.log(findSumIndex(arrInput, targetInput));
+      
+      
+    </script>
+  </body>
+</html>
