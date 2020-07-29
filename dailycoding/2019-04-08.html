@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>2019-04-08</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <pre>
+
+      안녕하세요, 매일프로그래밍 이번주 문제입니다.
+ 
+      주어진 string 에 모든 단어를 거꾸로 하시오.
+
+      Reverse all the words in the given string.
+
+
+
+      예제)
+
+      Input: “abc 123 apple”
+
+      Output: “cba 321 elppa”
+
+--------------------------------------------------------------------------------------------------------------------------------------
+    </pre>
+
+    <script type="text/javascript">
+
+      const inputStr = 'abc 123 apple';
+
+      function reverseWords(paramStr) {
+        let arrStr = paramStr.split(' ');
+        let rtnArr = [];
+        for ( let i = 0; i < arrStr.length; i++ ){
+          let selStr = arrStr[i].split('').reverse().join('');
+          rtnArr.push(selStr);          
+        }
+        return rtnArr.join(' ');
+      }
+      
+      console.log(reverseWords(inputStr));
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>2019-04-15</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <pre>
+
+      안녕하세요, 매일프로그래밍 이번주 문제입니다.
+ 
+      정수 배열(int array)이 주어지면 두번째로 큰 값을 프린트하시오.      
+      
+      Given an integer array, find the second largest element.
+      
+      
+      예제)
+      
+      Input: [10, 5, 4, 3, -1]
+      
+      Output: 5
+      
+      
+      Input: [3, 3, 3]
+      
+      Output: Does not exist.
+
+--------------------------------------------------------------------------------------------------------------------------------------
+    </pre>
+
+    <script type="text/javascript">
+
+      const inputArr1 = [10, 5, 4, 3, -1];
+      const inputArr2 = [3, 3, 3];
+
+      function findSecondLargeNum(paramArr) {
+        paramArr.sort( ( a, b ) => b - a );
+        const rtnSet = new Set(paramArr);
+        const iterator = rtnSet.values();
+        iterator.next();
+        if ( rtnSet.size <= 1) {
+          return 'Does not exist.';
+        } else {
+          return iterator.next().value;
+        }
+      }
+      
+      console.log(findSecondLargeNum(inputArr1));
+
+    </script>
+  </body>
+</html>
