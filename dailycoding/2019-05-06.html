@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>2019-05-06</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <pre>
+
+      안녕하세요, 매일프로그래밍 이번주 문제입니다.
+ 
+      길이가 같은 두 문자열(string) A 와 B가 주어지면, A 가 B 로 1:1 암호화 가능한지 찾으시오.
+      
+      Given two strings of equal length, check if two strings can be encrypted 1 to 1.
+      
+      
+      예제)
+      
+      Input: “EGG”, “FOO”
+      
+      Output: True // E->F, G->O
+      
+      
+      Input: “ABBCD”, “APPLE”
+      
+      Output: True // A->A, B->P, C->L, D->E
+      
+      
+      Input: “AAB”, “FOO”
+      
+      Output: False
+
+--------------------------------------------------------------------------------------------------------------------------------------
+    </pre>
+
+    <script type="text/javascript">
+
+      const inputArrStr1 = ['EGG','FOO'];
+      const inputArrStr2 = ['ABBCD','APPLE'];
+      const inputArrStr3 = ['AAB','FOO'];
+
+      function encrypted1to1(paramArr) {
+        const checkEncrypt = new Map();
+        let position = -1;
+        for ( let i = 0; i < paramArr[0].length; i++ ){
+          if ( checkEncrypt.has(paramArr[0][i]) ) {
+            if ( checkEncrypt.get(paramArr[0][i]) !== paramArr[1][i] ) {
+              return false;
+            }
+          }
+          checkEncrypt.set(paramArr[0][i], paramArr[1][i])
+        }
+        console.log(checkEncrypt);
+        return true;
+      }
+      
+      console.log(encrypted1to1(inputArrStr2));
+
+    </script>
+  </body>
+</html>

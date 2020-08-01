@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>2019-05-20</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <pre>
+
+      안녕하세요, 매일프로그래밍 이번주 문제입니다.
+ 
+      정수 배열(int array)과 정수 N이 주어지면, N번째로 큰 배열 원소를 찾으시오.
+      
+      Given an integer array and integer N, find the Nth largest element in the array.
+      
+      예제)
+      
+      Input: [-1, 3, -1, 5, 4], 2
+      Output: 4
+      
+      Input: [2, 4, -2, -3, 8], 1
+      Output: 8
+      
+      Input: [-5, -3, 1], 3
+      Output: -5
+
+--------------------------------------------------------------------------------------------------------------------------------------
+    </pre>
+
+    <script type="text/javascript">
+
+      const inputArr1 = [-1, 3, -1, 5, 4];
+      const inputVal1 = 2;
+      const inputArr2 = [2, 4, -2, -3, 8];
+      const inputVal2 = 1;
+      const inputArr3 = [-5, -3, 1];
+      const inputVal3 = 3;
+      
+      function findLargestElement1(paramArr, paramVal) {
+        return quickSort(paramArr, 0, paramArr.length-1, paramVal-1);
+      }
+
+      function swap(paramArr, before, after) {
+        let tmp = paramArr[before];
+        paramArr[before] = paramArr[after];
+        paramArr[after] = tmp;
+        console.log(paramArr);
+      }
+
+      function partition(paramArr, first, last) {
+        console.log('partition : ' + paramArr + ' first : ' + first + ' last : ' + last);
+        let pivot = first;
+        for ( let i = first; i < last; i++ ) {
+          if ( paramArr[i] > paramArr[last] ) {
+            console.log(i + ' : ' + paramArr);
+            swap(paramArr, i, pivot);
+            console.log(i + ' : ' + paramArr);
+            pivot++;
+          }
+        }
+        swap(paramArr, pivot, last);
+        return pivot;
+      }
+
+      function quickSort(paramArr, first, last, target) {
+        console.log(paramArr);
+        if ( first <= last ) {
+          let pivot = partition(paramArr, first, last);
+          if ( pivot == target ) {
+            return paramArr[pivot];
+          } else if ( pivot < target ) {
+            return quickSort(paramArr, pivot + 1, last, target);
+          } else {
+            return quickSort(paramArr, first, pivot - 1, target);
+          }
+        }
+        return 0;
+      }
+
+      function findLargestElement2(paramArr, paramVal) {
+        
+        paramArr.sort((a, b) => b - a);
+        console.log(paramArr);
+        return paramArr[paramVal-1];
+      }
+      
+      console.log(findLargestElement1(inputArr2, inputVal2));
+
+    </script>
+  </body>
+</html>

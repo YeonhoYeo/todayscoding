@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>2019-05-13</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <pre>
+
+      안녕하세요, 매일프로그래밍 이번주 문제입니다.
+ 
+      정수로된 배열이 주어지면, 각 원소가 자신을 뺀 나머지 원소들의 곱셈이 되게하라.
+      
+      단, 나누기 사용 금지, O(n) 시간복잡도
+      
+      
+      Given an integer array, make each element a product of all element values without itself.
+      
+      
+      예제)
+      
+      input: [1, 2, 3, 4, 5]
+      
+      output: [120, 60, 40, 30, 24]
+
+--------------------------------------------------------------------------------------------------------------------------------------
+    </pre>
+
+    <script type="text/javascript">
+
+      const inputArrVal = [1, 2, 3, 4, 5];
+
+      function allelemantVal(paramArr) {
+
+        const rtnArr1 = new Array(paramArr.length);
+        const rtnArr2 = new Array(paramArr.length);
+        const rtnArr3 = new Array(paramArr.length);
+
+        let mult1Val = 1;
+
+        for ( let i = 0; i < paramArr.length; i += 1 ){
+          rtnArr1[i] = mult1Val;
+          mult1Val *= paramArr[i];
+        }
+
+        console.log(rtnArr1);
+
+        mult1Val = 1;
+
+        for ( let i = paramArr.length - 1; i >= 0; i -= 1 ){
+          rtnArr2[i] = mult1Val;
+          mult1Val *= paramArr[i];
+        }
+
+        console.log(rtnArr2);
+
+        for ( let i = 0; i < paramArr.length; i += 1 ){
+          rtnArr3[i] = rtnArr1[i] * rtnArr2[i];
+        }
+
+        return rtnArr3;
+      }
+      
+      console.log(allelemantVal(inputArrVal));
+
+    </script>
+  </body>
+</html>
