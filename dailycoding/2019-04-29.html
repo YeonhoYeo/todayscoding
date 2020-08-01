@@ -36,30 +36,27 @@
 
     <script type="text/javascript">
 
-      const inputArr1 = [0, 5, 0, 3, -1];
-      const inputArr2 = [3, 0, 3];
-      const inputArr3 = [1, 2, 3, 0, 4];
+      const inputStr1 = 'aabcbcbc';
+      const inputStr2 = 'aaaaaaaa';
+      const inputStr3 = 'abbbcedd';
 
-      function zeroMoveRight(paramArr) {
-        let position = -1;
-        for ( let i = 0; i < paramArr.length; i++){
-          if( position < 0 && paramArr[i] === 0 ) {
-            position = i;
-          }
-          if( i === 0 ) {
-            continue;
-          }
-          if( position >= 0 && paramArr[i] !== 0 ) {
-            let switchVal = paramArr[position];
-            paramArr[position] = paramArr[i];
-            paramArr[i] = switchVal;
-            position ++;
+      function findlargestSubstr(paramStr) {
+        let maxNum = 0;
+        let notDuplChar = '';
+        for ( let i = 0; i < paramStr.length; i++){
+          if ( notDuplChar.indexOf(paramStr.charAt(i)) >= 0 ) {
+            notDuplChar = paramStr.charAt(i);
+          } else {
+            notDuplChar += paramStr.charAt(i);
+            if ( maxNum < notDuplChar.length ) {
+              maxNum = notDuplChar.length;
+            }
           }
         }
-        return paramArr;
+        return maxNum;
       }
       
-      console.log(zeroMoveRight(inputArr3));
+      console.log(findlargestSubstr(inputStr1));
 
     </script>
   </body>
