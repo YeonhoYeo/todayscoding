@@ -46,21 +46,19 @@
         let tmp = paramArr[before];
         paramArr[before] = paramArr[after];
         paramArr[after] = tmp;
-        console.log(paramArr);
       }
 
       function partition(paramArr, first, last) {
-        console.log('partition : ' + paramArr + ' first : ' + first + ' last : ' + last);
         let pivot = first;
         for ( let i = first; i < last; i++ ) {
           if ( paramArr[i] > paramArr[last] ) {
-            console.log(i + ' : ' + paramArr);
             swap(paramArr, i, pivot);
-            console.log(i + ' : ' + paramArr);
             pivot++;
           }
         }
+        console.log('swap : ' + paramArr);
         swap(paramArr, pivot, last);
+        console.log('swap : ' + paramArr);
         return pivot;
       }
 
@@ -79,6 +77,38 @@
         return 0;
       }
 
+      function justPartition(paramArr, left, right) {
+        let pivot = paramArr[Math.floor((left + right) / 2)];
+        while (left <= right) {
+          while (paramArr[left] < pivot) {
+            left++;
+          }
+          while (paramArr[right] > pivot) {
+            right--;
+          }
+          if (left <= right){
+            swap(paramArr, left, right);
+            left++;
+            right--;
+          }
+        }
+        return left;
+      }
+
+      function justQucikSort(paramArr, left = 0, right = paramArr.length - 1) {
+        console.log('paramArr : ' + paramArr);
+        if ( paramArr.length > 1 ) {
+          let index = justPartition(paramArr, left, right);
+          if ( left < index - 1 ) {
+            justQucikSort(paramArr, left, index - 1);
+          } 
+          if ( index < right) {
+            justQucikSort(paramArr, index, right);
+          }
+        }
+        return paramArr;
+      }
+
       function findLargestElement2(paramArr, paramVal) {
         
         paramArr.sort((a, b) => b - a);
@@ -86,7 +116,8 @@
         return paramArr[paramVal-1];
       }
       
-      console.log(findLargestElement1(inputArr2, inputVal2));
+      console.log(findLargestElement1(inputArr3, inputVal3));
+      console.log(justQucikSort(inputArr1));
 
     </script>
   </body>

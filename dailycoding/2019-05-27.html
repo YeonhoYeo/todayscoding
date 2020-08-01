@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>2019-05-27</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <pre>
+
+      안녕하세요, 매일프로그래밍 이번주 문제입니다.
+ 
+      문자열 배열(string array)이 주어지면, 제일 긴 공통된 접두사(prefix)의 길이를 찾으시오.
+      
+      Given an array of strings, find the longest common prefix of all strings.
+      
+      예제)
+      
+      Input: [“apple”, “apps”, “ape”]
+      
+      Output: 2 // “ap”
+      
+      
+      Input: [“hawaii”, “happy”]
+      
+      Output: 2 // “ha”
+      
+      
+      Input: [“dog”, “dogs”, “doge”]
+      
+      Output: 3 // “dog”
+
+--------------------------------------------------------------------------------------------------------------------------------------
+    </pre>
+
+    <script type="text/javascript">
+
+      const inputArr1 = ['apple', 'apps', 'ape'];
+      const inputArr2 = ['hawaii', 'happy'];
+      const inputArr3 = ['dog', 'dogs', 'doge'];
+      
+      function getLongestPrefix(paramArr) {
+        let preFix = ''; 
+        for (let i = 0; i < paramArr[0].length; i++) {    
+          preFix = paramArr[0].substr(0, i+1);    
+          for (let j = 0; j < paramArr.length; j++) {
+            if(preFix !== paramArr[j].substr(0, i+1)) {
+              return preFix.substr(0, preFix.length-1);
+            }
+          }
+        }
+        return preFix;
+      }
+
+      console.log(getLongestPrefix(inputArr2));
+
+    </script>
+  </body>
+</html>
